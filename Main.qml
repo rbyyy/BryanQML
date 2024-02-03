@@ -7,6 +7,27 @@ Window {
     visible: true
     title: qsTr("Hello World")
 
+
+
+    // ****************************************************    Popup下面有background和contentItem
+    // ****************************************************    Popup视图和contentItem之间有padding
+    // ** b                                              **
+    // ** a *******************************************  **
+    // ** c *                                         *  **
+    // ** k *                                         *  **
+    // ** g *                                         *  **
+    // ** r *               contentItem               *  **
+    // ** o *                                         *  **
+    // ** u *                                         *  **
+    // ** n *                                         *  **
+    // ** d *                                         *  **
+    // **   *                                         *  **
+    // **   *                                         *  **
+    // **   *******************************************  **
+    // **                                                **
+    // ****************************************************
+    // ****************************************************
+
     // 不能使用anchors
     // 新建Popup默认不可见，可见方式有两种 1.visible设置为true 2.使用open方法
     Popup {
@@ -17,17 +38,17 @@ Window {
         height: 300
         // visible: true //默认为false
 
-        // background: Rectangle { // 该属性和contentItem只能设置一个
-        //     color: "grey"
-        //     border.width: 8
-        //     border.color: "#33FF0000" // ARGB
-        // }
+        background: Rectangle { // 该属性和contentItem只能设置一个
+            color: "grey"
+            border.width: 2
+            border.color: "#33FF0000" // ARGB
+        }
 
         contentItem: Rectangle { // 类型为Item
             anchors.fill: parent
             color: "lightblue"
-            border.width: 8
-            border.color: "#33FF0000" // ARGB
+            // border.width: 8
+            // border.color: "#33FF0000" // ARGB
 
             Button {
                 id:idButtonCancel
@@ -62,7 +83,7 @@ Window {
         dim: true
 
         // 关闭策略
-        closePolicy: Popup.CloseOnEscape
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
 
         // 设置popup以外部分的显示效果
         // modal: 模态
