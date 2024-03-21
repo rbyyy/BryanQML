@@ -7,6 +7,88 @@ Window {
     visible: true
     title: qsTr("Hello World")
 
+    Repeater {
+        id:idRepeater
+        model: 10
+        delegate: Text {
+            x: 50 * index + 20
+            y: 30
+            text: "Hello"
+        }
+    }
+
+    // BaseControlsPage {
+    //     anchors.fill: parent
+    // }
+
+    // BaseScrollViewPage {
+    //     anchors.fill: parent
+    // }
+
+    // Label {
+    //     width: 200
+    //     height: 30
+    //     background: Rectangle {
+    //         color: "lightblue"
+    //         border.width: 2
+    //         border.color: "red"
+    //     }
+    //     leftInset: 20
+    //     text: "Test Label Inset"
+    // }
+
+    Text {
+        id: idTextTest
+        text: qsTr("- -")
+        font.pixelSize: 28
+
+        // 文本的最大宽度
+        Component.onCompleted: {
+            console.log("idTextTest width: " + width)
+        }
+    }
+
+    Image {
+        id:idImageTest
+        width: 400
+        height: 400
+        source: "qrc:/images/login_left.png"
+        sourceSize: Qt.size(100, 100) // 设置源图片的大小·
+        sourceClipRect: Qt.rect(0, 0, 400, 400) // 从左上角开始，裁剪200*400的区域
+        fillMode: Image.PreserveAspectCrop
+    }
+
+    AnimatedImage {
+        id:idAnimatedImage
+        width: 400
+        height: 400
+        source: "qrc:/images/animation.gif"
+        fillMode: Image.PreserveAspectCrop
+    }
+
+    // Text {
+    //     id: idTextOuter
+    //     width: 0
+    //     height: 30
+    //     elide: Text.ElideRight
+    //     text: qsTr("texttexttexttexttexttexttexttexttexttexttexttexttexttex")
+
+    //     Text {
+    //         id:idTextInner
+    //         text: idTextOuter.text
+    //         visible: false
+
+    //         onWidthChanged: {
+    //             console.log("idTextInner width: " + width)
+    //             if (width > 200) {
+    //                 idTextOuter.width = 200;
+    //             } else {
+    //                 idTextOuter.width = width;
+    //             }
+    //         }
+    //     }
+    // }
+
 
 
     // ****************************************************    Popup下面有background和contentItem
@@ -158,5 +240,9 @@ Window {
         onClicked: {
             idPopup.close();
         }
+    }
+
+    function openPopup(message) {
+        idPopup.open();
     }
 }
